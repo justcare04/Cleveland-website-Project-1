@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Cleveland</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background-color: #1d3557;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #457b9d;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f1faee;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #f1faee;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .attraction-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .attraction-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .attraction-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .attraction-card h3 {
+            margin: 1rem 0;
+            color: #1d3557;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #457b9d;
+            color: white;
+        }
+
+        tr:hover td {
+            background-color: #f5f5f5;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 2px solid #457b9d;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #1d3557;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #457b9d;
+        }
+
+        footer {
+            background-color: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Cleveland, Ohio</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#attractions">Attractions</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Cleveland</h2>
+            <p>Cleveland, situated on the southern shore of Lake Erie, is a vibrant city known for its rich cultural heritage, world-class museums, and passionate sports fans. Home to the Rock and Roll Hall of Fame, Cleveland has earned its nickname as "The Rock and Roll Capital of the World."</p>
+            
+            <h3>Quick Facts</h3>
+            <ul>
+                <li>Founded: 1796</li>
+                <li>Population: Approximately 372,624 (2020)</li>
+                <li>Location: Northeast Ohio, on Lake Erie</li>
+                <li>Known for: Rock and Roll Hall of Fame, Cleveland Clinic, Cultural Gardens</li>
+            </ul>
+        </section>
+
+        <section id="attractions" class="section">
+            <h2>Popular Attractions</h2>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <h3>Cleveland Museum of Art</h3>
+                    <img src="/Cleveland-website-Project-1/images/cleveland-museum.jpg" alt="Cleveland Museum of Art with reflecting pool and landscaped grounds" />
+                    <p>One of the most respected art museums in the world, with free admission. Beautiful grounds feature a reflecting pool and classical architecture.</p>
+                </div>
+                <div class="attraction-card">
+                    <h3>Rock and Roll Hall of Fame</h3>
+                    <img src="/Cleveland-website-Project-1/images/rock-hall.jpg" alt="Rock and Roll Hall of Fame building at sunset with Cleveland skyline" />
+                    <p>Explore the history of rock and roll in this iconic museum, featuring a stunning modern architectural design on the shores of Lake Erie.</p>
+                </div>
+                <div class="attraction-card">
+                    <h3>West Side Market</h3>
+                    <img src="/Cleveland-website-Project-1/images/west-side-market.jpg" alt="Historic West Side Market building with Cleveland skyline" />
+                    <p>Historic public market featuring local vendors and ethnic foods in a beautiful brick building dating back to 1912.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="section">
+            <h2>Annual Events</h2>
+            <table>
+                <tr>
+                    <th>Event</th>
+                    <th>Month</th>
+                    <th>Location</th>
+                </tr>
+                <tr>
+                    <td>Cleveland International Film Festival</td>
+                    <td>March/April</td>
+                    <td>Playhouse Square</td>
+                </tr>
+                <tr>
+                    <td>Parade the Circle</td>
+                    <td>June</td>
+                    <td>Wade Oval</td>
+                </tr>
+                <tr>
+                    <td>Burning River Fest</td>
+                    <td>July</td>
+                    <td>Coast Guard Station</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Get in Touch</h3>
+                    <p>Phone: 1-800-555-5555</p>
+                    <p>Email: carelicha@yahoo.com</p>
+                    <p>Follow us on X: @X</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cleveland Tourism | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
