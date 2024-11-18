@@ -1,67 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Cleveland</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        :root {
-            --primary-color: #1d3557;
-            --secondary-color: #457b9d;
-            --background-color: #ffffff;
-            --text-color: #333;
-            --card-background: #f1faee;
-        }
-
-        [data-theme="dark"] {
-            --primary-color: #1a4b8c;
-            --secondary-color: #2c5282;
-            --background-color: #1a202c;
-            --text-color: #e2e8f0;
-            --card-background: #2d3748;
         }
 
         body {
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
+            color: #333;
         }
 
         header {
-            background-color: var(--primary-color);
+            background-color: #1d3557;
             color: white;
             padding: 1rem;
             text-align: center;
-            position: relative;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.5rem;
         }
 
         nav {
-            background-color: var(--secondary-color);
+            background-color: #457b9d;
             padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         nav ul {
@@ -75,22 +40,10 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            position: relative;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+        nav a:hover {
+            color: #f1faee;
         }
 
         .container {
@@ -99,48 +52,12 @@
             padding: 2rem;
         }
 
-        .hero {
-            background-image: url('/api/placeholder/1200/400');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            transition: background 0.3s;
-        }
-
-        .hero:hover::before {
-            background: rgba(0,0,0,0.1);
-        }
-
         .section {
             margin: 2rem 0;
             padding: 2rem;
-            background-color: var(--card-background);
+            background-color: #f1faee;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transform: translateY(0);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .attractions-grid {
@@ -151,16 +68,29 @@
         }
 
         .attraction-card {
-            background: var(--background-color);
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .attraction-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .attraction-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .attraction-card h3 {
+            margin: 1rem 0;
+            color: #1d3557;
         }
 
         .gallery {
@@ -204,40 +134,25 @@
             transform: translateY(0);
         }
 
-        .weather-widget {
-            background: var(--card-background);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .current-weather {
-            font-size: 2rem;
-            margin: 1rem 0;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
-            background-color: var(--background-color);
         }
 
         th, td {
-            border: 1px solid var(--secondary-color);
+            border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
-            transition: background-color 0.3s;
         }
 
         th {
-            background-color: var(--secondary-color);
+            background-color: #457b9d;
             color: white;
         }
 
         tr:hover td {
-            background-color: rgba(69, 123, 157, 0.1);
+            background-color: #f5f5f5;
         }
 
         .contact-form {
@@ -253,84 +168,30 @@
             width: 100%;
             padding: 0.8rem;
             margin-top: 0.5rem;
-            border: 2px solid var(--secondary-color);
+            border: 2px solid #457b9d;
             border-radius: 4px;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.2);
         }
 
         button {
-            background-color: var(--primary-color);
+            background-color: #1d3557;
             color: white;
             padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
+            background-color: #457b9d;
         }
 
         footer {
-            background-color: var(--primary-color);
+            background-color: #1d3557;
             color: white;
             text-align: center;
             padding: 2rem;
             margin-top: 2rem;
-        }
-
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            z-index: 1000;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-        }
-
-        .scroll-to-top:hover {
-            transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
@@ -338,7 +199,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
             .attractions-grid {
                 grid-template-columns: 1fr;
             }
@@ -348,35 +208,18 @@
 <body>
     <header>
         <h1>Welcome to Cleveland, Ohio</h1>
-        <button class="theme-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
     </header>
 
     <nav>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#attractions">Attractions</a></li>
-            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="hero">
-        <h2>Discover The Heart of Rock and Roll</h2>
-    </div>
-
     <div class="container">
-        <div class="weather-widget">
-            <h3>Current Weather in Cleveland</h3>
-            <div class="current-weather">
-                <i class="fas fa-sun"></i>
-                <span id="temperature">72°F</span>
-            </div>
-            <p>Sunny with a gentle breeze</p>
-        </div>
-
         <section id="about" class="section">
             <h2>About Cleveland</h2>
             <p>Cleveland, situated on the southern shore of Lake Erie, is a vibrant city known for its rich cultural heritage, world-class museums, and passionate sports fans. Home to the Rock and Roll Hall of Fame, Cleveland has earned its nickname as "The Rock and Roll Capital of the World."</p>
@@ -394,41 +237,19 @@
             <h2>Popular Attractions</h2>
             <div class="attractions-grid">
                 <div class="attraction-card">
-                    <h3>Rock and Roll Hall of Fame</h3>
-                    <img src="/api/placeholder/300/200" alt="Rock and Roll Hall of Fame" />
-                    <p>Explore the history of rock and roll in this iconic museum.</p>
+                    <h3>Cleveland Museum of Art</h3>
+                    <img src="/Cleveland-website-Project-1/images/cleveland-museum.jpg" alt="Cleveland Museum of Art with reflecting pool and landscaped grounds" />
+                    <p>One of the most respected art museums in the world, with free admission. Beautiful grounds feature a reflecting pool and classical architecture.</p>
                 </div>
                 <div class="attraction-card">
-                    <h3>Cleveland Museum of Art</h3>
-                    <img src="/api/placeholder/300/200" alt="Cleveland Museum of Art" />
-                    <p>One of the most respected art museums in the world, with free admission.</p>
+                    <h3>Rock and Roll Hall of Fame</h3>
+                    <img src="/Cleveland-website-Project-1/images/rock-hall.jpg" alt="Rock and Roll Hall of Fame building at sunset with Cleveland skyline" />
+                    <p>Explore the history of rock and roll in this iconic museum, featuring a stunning modern architectural design on the shores of Lake Erie.</p>
                 </div>
                 <div class="attraction-card">
                     <h3>West Side Market</h3>
-                    <img src="/api/placeholder/300/200" alt="West Side Market" />
-                    <p>Historic public market featuring local vendors and ethnic foods.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery" class="section">
-            <h2>Photo Gallery</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Cleveland Skyline" />
-                    <div class="gallery-caption">Cleveland Skyline at Sunset</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Lake Erie" />
-                    <div class="gallery-caption">Beautiful Lake Erie</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Cleveland Browns Stadium" />
-                    <div class="gallery-caption">Cleveland Browns Stadium</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="/api/placeholder/400/300" alt="Little Italy" />
-                    <div class="gallery-caption">Little Italy District</div>
+                    <img src="/Cleveland-website-Project-1/images/west-side-market.jpg" alt="Historic West Side Market building with Cleveland skyline" />
+                    <p>Historic public market featuring local vendors and ethnic foods in a beautiful brick building dating back to 1912.</p>
                 </div>
             </div>
         </section>
@@ -462,7 +283,7 @@
         <section id="contact" class="section">
             <h2>Contact Us</h2>
             <div class="contact-form">
-                <form id="contactForm">
+                <form>
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" id="name" required>
@@ -478,4 +299,18 @@
                     <button type="submit">Send Message</button>
                 </form>
 
-                <div class
+                <div style="margin-top: 2rem;">
+                    <h3>Get in Touch</h3>
+                    <p>Phone: 1-800-555-5555</p>
+                    <p>Email: carelicha@yahoo.com</p>
+                    <p>Follow us on X: @X</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cleveland Tourism | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
